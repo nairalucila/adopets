@@ -5,7 +5,9 @@ const port = 3000
 //router configuration
 app.use(require('./routers/index'));
 
-//midleware
+//middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
