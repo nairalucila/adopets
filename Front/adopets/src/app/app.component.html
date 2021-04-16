@@ -290,17 +290,124 @@
 
 <h1>Complete with your data</h1>
 
-<form [formGroup]="formSingIn" (ngSubmit)="onSubmit()">
-  
+<!-- FORMULARIO LOG IN -->
+
+<form [formGroup]="formSingIn" (ngSubmit)="onSubmitLogin()">
+
   <label>
-    <input type="text" formControlName="email" placeholder="Email">
+    <input type="email" formControlName="email" placeholder="Email" required>
+  </label>
+
+  <div>
+    <!-- ESTO NO ME SALEE -->
+    <div *ngIf="formSingIn.invalid == true">
+      Debe ser un email.
+    </div>
+  </div>
+
+  <label>
+    <input [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password" required>
+  </label>
+
+  <button type="submit" [disabled]="!formSingIn.valid">Submit</button>
+
+</form>
+<br>
+
+
+<!-- DATOS DE USUARIO -->
+
+<form [formGroup]="formUserData" (ngSubmit)="onSubmitUserData()">
+
+  <label>
+    <input type="text" formControlName="nameUser" placeholder="Nombre">
   </label>
 
   <label>
-    <input type="text" formControlName="password" placeholder="Password">
+    <input type="text" formControlName="lastnameUser" placeholder="Apellido">
   </label>
-  
-  <button type="submit" [disabled]="!formSingIn.valid">Submit</button>
+
+  <label>
+    <input type="text" formControlName="ageUser" placeholder="Edad">
+  </label>
+
+  <label>
+    <input type="text" formControlName="addresUser" placeholder="Calle + n°">
+  </label>
+
+  <label>
+    <input type="text" formControlName="neighborhoodUser" placeholder="Barrio">
+  </label>
+
+  <label>
+    <input type="text" formControlName="provinceUser" placeholder="Provincia">
+  </label>
+
+  <label>
+    <input type="text" formControlName="phoneUser" placeholder="Teléfono">
+  </label>
+
+  <label>
+    <input type="text" formControlName="secondPhoneUser" placeholder="Teléfono alternativo">
+  </label>
+
+  <button [disabled]="formUserData.valid">Agregar</button>
+
+
+</form>
+
+
+<!-- FORMULARIO PARA PERSONAS PROVISORIO -->
+
+<form class="form-provisorio" [formGroup]="formProvisorio" (ngSubmit)="onSubmitProvi()">
+
+
+  <label>
+    ¿Tenés mascotas propias?
+    <select name="tenesmascotas?" formControlName="havePets">
+      <option value="No">No</option>
+      <option value="Si">Si</option>
+    </select>
+  </label>
+
+  <label>
+    ¿Cuántos ppt podés cuidar?
+    <input formControlName="howPets" type="number" placeholder="Ex. 2" max="4">
+  </label>
+
+  <label>
+    ¿Qué tamaño de ppt podés cuidar?
+    <select formControlName="sizePets" name="tamaño-ppt">
+      <option value="indiferente">Indiferente</option>
+      <option value="pequeño">Pequeño (menor a 9kg)</option>
+      <option value="mediano">Mediano (entre a 10kg y 20kg)</option>
+      <option value="grandes">Grandes (mayor a 20kg)</option>
+    </select>
+  </label>
+
+  <label>
+    Edad del ppt a cuidar
+    <select formControlName="agePets" name="tamaño-ppt">
+      <option value="indiferente">Indiferente</option>
+      <option value="cachorros">Hasta 3 años</option>
+      <option value="adultos">Entre 4 y 8 años</option>
+      <option value="viejitos">Mayores a 8 años</option>
+    </select>
+  </label>
+
+  <label>
+    Género del ppt
+    <select formControlName="genderPets" name="tamaño-ppt">
+      <option value="indiferente">Indiferente</option>
+      <option value="macho">Macho</option>
+      <option value="hembra">Hembra</option>
+    </select>
+  </label>
+
+  <h4>Otras preguntas...</h4>
+
+
+  <button type="submit" [disabled]="formProvisorio.valid">Submit</button>
 
 </form>
 
