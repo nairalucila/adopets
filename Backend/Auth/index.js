@@ -13,10 +13,7 @@ app.use(require('./routers/index'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
+//port
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

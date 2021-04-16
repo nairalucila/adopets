@@ -2,8 +2,10 @@ const { Router } = require('express');
 const router = Router();
 
 //controller router
-const {dashboard} = require("../controllers/index.controller");
+const {login} = require("../controllers/index.controller");
+const {register} = require("../controllers/index.controller");
 
-router.get('/', dashboard );
+router.get('/login', login );
+router.post('/register', register);
 
 module.exports = router;
