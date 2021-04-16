@@ -25,6 +25,15 @@ export class AppComponent {
     genderPets: new FormControl(''),
 
   });
+  
+  formSingUp = new FormGroup({
+    nameUser: new FormControl(''),
+    lastnameUser: new FormControl(''),
+    ageUser: new FormControl(''),
+    emailUser: new FormControl(''),
+    passwordUser: new FormControl(''),
+    phoneUser: new FormControl(''),
+  });
 
   formUserData = new FormGroup({
     nameUser: new FormControl(''),
@@ -35,7 +44,6 @@ export class AppComponent {
     provinceUser: new FormControl(''),
     phoneUser: new FormControl(''),
     secondPhoneUser: new FormControl(''),
-
   })
 
   loginSubmitt: boolean;

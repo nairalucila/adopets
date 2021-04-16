@@ -314,6 +314,34 @@
 </form>
 <br>
 
+<!-- FORMULARIO REGISTRO -->
+
+<form [formGroup]="formSingUp">
+  <label>
+      <input type="text" formControlName="nameUser" placeholder="Nombre">
+    </label>
+  
+    <label>
+      <input type="text" formControlName="ageUser" placeholder="Edad">
+    </label>
+  
+    <label>
+      <input type="email" formControlName="emailUser" placeholder="Email">
+    </label>
+
+    <label>
+      <input type="text" formControlName="passwordUser" placeholder="Password">
+    </label>
+  
+    <label>
+      <input type="text" formControlName="phoneUser" placeholder="Teléfono">
+    </label>
+    
+  
+    <button type="submit" [disabled]="!formSingUp.valid">Submit</button>
+
+</form>
+
 
 <!-- DATOS DE USUARIO -->
 
@@ -350,6 +378,7 @@
   <label>
     <input type="text" formControlName="secondPhoneUser" placeholder="Teléfono alternativo">
   </label>
+  
 
   <button [disabled]="formUserData.valid">Agregar</button>
 
