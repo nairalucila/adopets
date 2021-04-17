@@ -18,4 +18,25 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmitLogin() {
+    console.table(this.formSingIn.value.email);
+
+    let emailogin = this.formSingIn.value.email;
+    let passwordlogin = this.formSingIn.value.password;
+
+  }
+
+  getPasswordErrorMessage() {
+    if (this.formSingIn.get('password').hasError('required')) {
+      return 'You must enter a value';
+    }
+  }
+
+  getEmailErrorMessage() {
+    if (this.formSingIn.get('email').hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.formSingIn.get('email').hasError('email') ? 'Not a valid email' : '';
+  }
+ 
 }
