@@ -13,6 +13,8 @@ export class SignInComponent implements OnInit {
     password: new FormControl('', Validators.required,),
   });
 
+  hide: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {

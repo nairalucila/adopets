@@ -48,19 +48,9 @@ export class AppComponent {
 
   loginSubmitt: boolean;
   title = 'adopets';
-  hide: boolean = true;
+  
 
   constructor() {
-    this.loginSubmitt = false;
-  }
-
-  onSubmitLogin() {
-    this.loginSubmitt = true;
-    console.table(this.formSingIn.value.email);
-
-    let emailogin = this.formSingIn.value.email;
-    let passwordlogin = this.formSingIn.value.password;
-
   }
 
 

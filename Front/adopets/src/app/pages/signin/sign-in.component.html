@@ -17,9 +17,10 @@
     <mat-form-field appearance="standard">
 
       <mat-label>Password</mat-label>
-      <input matInput formControlName="password" placeholder="Password" required autocomplete="off">
+      <input matInput formControlName="password" placeholder="Password" required autocomplete="off" >
       <mat-icon matSuffix>password</mat-icon>
       <mat-hint>Ingres your password</mat-hint>
+      
       <mat-error *ngIf="formSingIn.get('password').invalid">{{getPasswordErrorMessage()}}</mat-error>
     </mat-form-field>
 
