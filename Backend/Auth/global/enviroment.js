@@ -1,9 +1,14 @@
-import {config} from 'dotenv';
+const { config } = require('dotenv');
 
-export const readENV = () => {
+const readENV = () => {
   config();
 };
 
-export const get = (envName = '') => {
+const get = (envName = '') => {
   return process.env[envName];
 };
+
+module.exports = {
+  readENV,
+  get
+}
