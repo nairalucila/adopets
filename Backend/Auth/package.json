@@ -4,25 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"index",
-    "test": "mocha",
+    "start": "index",
+    "test": "mocha --timeout 5000",
     "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.6.0"
+    "sequelize": "^6.6.0",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "eslint": "^7.21.0",
     "eslint-config-google": "^0.14.0",
     "husky": "^4.3.8",
-    "mocha": "^8.3.0"
+    "mocha": "^8.3.0",
+    "sinon": "^10.0.0"
   },
   "husky": {
     "hooks": {
