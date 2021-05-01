@@ -6,12 +6,12 @@ const port = 3000;
 // initialize env vars
 readENV();
 
-// router configuration
-app.use(require('./routers/index'));
-
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+// router configuration
+app.use(require('./routers/index'));
+
 
 //port
 app.listen(port, () => {
