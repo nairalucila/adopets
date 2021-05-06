@@ -25,7 +25,7 @@ describe('Auth tests', () => {
     })
 
     it('should throw an error if bcrypt fails', (done) => {
-        const hash = stub(bcrypt, 'hash');
+        stub(bcrypt, 'hash');
         bcrypt.hash.throws()
         const req = {
             body: {
@@ -45,5 +45,6 @@ describe('Auth tests', () => {
             expect(res).to.have.property('status', 500)
             done()
         }).catch(console.log)
+        bcrypt.hash.restore();
     })
 })
