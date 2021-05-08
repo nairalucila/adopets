@@ -1,9 +1,14 @@
-
 const validator = require('validator');
-const User = require('../models/User');
+const User = require('./model');
 const bcrypt = require('bcrypt');
 
-const register = async function (req, res) {
+
+
+function loginController(req, res) {
+    res.send('hello world')
+}
+
+async function registerController(req, res) {
     if (!validator.isEmail(req.body.email)) {
         return res.sendStatus(404)
     }
@@ -29,12 +34,13 @@ const register = async function (req, res) {
     }
 
     res.status(201).json(user)
+
 }
 
 
 
 
-module.exports = { register }
-
-
-
+module.exports = {
+    loginController,
+    registerController
+}

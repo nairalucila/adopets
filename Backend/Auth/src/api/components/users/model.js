@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 
-const DB = require('../global/database');
+const DB = require('../../../config/database');
 
 const User = DB.define(
     'User',

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { register } = require('../controllers/auth');
+const { register: registerController } = require('../src/api/components/auth/controller');
 const { stub } = require('sinon');
 const bcrypt = require('bcrypt');
 
@@ -18,7 +18,7 @@ describe('Auth tests', () => {
             }
         }
 
-        register(req, res).then(r => {
+        registerController(req, res).then(r => {
             expect(res).to.have.property('status', 404)
             done()
         }).catch(console.log)
@@ -40,7 +40,7 @@ describe('Auth tests', () => {
         res.sendStatus = function (status) {
             res.status = status
         }
-        register(req, res).then((r) => {
+        registerController(req, res).then((r) => {
             console.log(r)
             expect(res).to.have.property('status', 500)
             done()

@@ -1,7 +1,8 @@
 const { get } = require('./enviroment');
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize(
+
+const db = new Sequelize(
   get('DATABASE_NAME'),
   get('USER_NAME'),
   get('DATABASE_PASSWORD'),
@@ -11,4 +12,6 @@ const sequelize = new Sequelize(
   },
 );
 
-module.exports =  sequelize;
+
+
+module.exports = db;

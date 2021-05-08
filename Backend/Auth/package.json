@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "index",
+    "start": "nodemon src/api/index.js",
     "test": "mocha --timeout 5000",
-    "dev": "nodemon index.js"
+    "dev": "nodemon src/api/index.js"
   },
   "author": "",
   "license": "ISC",
