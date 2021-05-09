@@ -1,5 +1,4 @@
 
-
 // INIT ENV VARS
 const {readENV} = require('../config/enviroment');
 readENV();

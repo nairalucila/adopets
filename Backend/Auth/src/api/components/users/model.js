@@ -1,39 +1,44 @@
-const { DataTypes } = require('sequelize');
+const {DataTypes} = require('sequelize');
 
-const DB = require('../../../config/database');
-
-const User = DB.define(
-    'User',
-    {
-        // Model attributes are defined here
+function initModel(DatabaseInstance) {
+  return DatabaseInstance.define(
+      'User',
+      {
+      // Model attributes are defined here
         firstName: {
-            type: DataTypes.STRING,
-            allowNull: false,
+          type: DataTypes.STRING,
+          allowNull: false,
         },
         lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
+          type: DataTypes.STRING,
+          allowNull: false,
         },
         email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: true,
         },
         password: {
-            type: DataTypes.STRING,
-            allowNull: false,
+          type: DataTypes.STRING,
+          allowNull: false,
         },
         phone: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: true,
         },
-    },
-    {
-        // Other model options go here
-    },
-);
-User.sync();
+      },
+      {
+      // Other model options go here
+      },
+  );
+  User.sync();
+  User.prototype.toJSON = function() {
+    const values = Object.assign({}, this.get());
 
-module.exports =  User;
+    delete values.password;
+    return values;
+  };
+}
+
+module.exports = initModel;

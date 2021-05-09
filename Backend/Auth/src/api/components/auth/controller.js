@@ -1,46 +1,40 @@
-const validator = require('validator');
-const User = require('./model');
-const bcrypt = require('bcrypt');
+// const express = require('express');
+const {instanceUser, encryptPassword} = require('./service');
 
-
-
+/**
+ * Login a new user in to app
+ * @param {object} req Request obj
+ * @param {object} res Request obj
+ */
 function loginController(req, res) {
-    res.send('hello world')
+  res.send('hello world');
 }
 
+/**
+ *  Register a new User entity into the database
+ * @param {e.Request} req
+ * @param {e.Response} res
+ * @return {Promise<Response>} express return object
+ */
 async function registerController(req, res) {
-    if (!validator.isEmail(req.body.email)) {
-        return res.sendStatus(404)
-    }
-    const { firstName,
-        lastName,
-        email,
-        password,
-        phone } = req.body;
+  let user;
+  try {
+    user = instanceUser(req.body);
+  } catch (error) {
+    return res.sendStatus(400);
+  }
 
-    let user;
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        user = await User.create({
-            firstName,
-            lastName,
-            email,
-            password: hashedPassword,
-            phone
-        })
+  try {
+    encryptPassword(user);
+    await user.save();
+  } catch (e) {
+    return res.sendStatus(500);
+  }
 
-    } catch (e) {
-        return res.sendStatus(500)
-    }
-
-    res.status(201).json(user)
-
+  res.status(201).json(user);
 }
-
-
-
 
 module.exports = {
-    loginController,
-    registerController
-}
+  loginController,
+  registerController,
+};
