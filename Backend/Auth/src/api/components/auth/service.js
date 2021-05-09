@@ -28,7 +28,7 @@ function instanceUser(body) {
  */
 async function encryptPassword(user) {
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(user.password, 10);
     user.password = hashedPassword;
   } catch (e) {
     throw new Error('bcrypt.hash error');
