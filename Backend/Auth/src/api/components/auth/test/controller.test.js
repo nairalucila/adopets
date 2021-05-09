@@ -1,13 +1,11 @@
-jest.mock('../src/api/components/users/model')
-jest.mock('sequelize');
 
-const {registerController} = require('../src/api/components/auth/controller');
+const {registerController} = require('../controller');
 const {
   encryptPassword,
   instanceUser,
-} = require('../src/api/components/auth/service');
+} = require('../service');
 
-jest.mock('../src/api/components/auth/service');
+jest.mock('../service');
 
 const mockReq = {
   body: {
